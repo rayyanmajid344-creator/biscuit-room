@@ -39,12 +39,9 @@ Download the folder and open `index.html` in Chrome, Edge or Firefox. No server 
 
 ## Unsplash key (for Biscuit Pins)
 
-1. Create a free account at [unsplash.com](https://unsplash.com/join).
-2. Go to [unsplash.com/oauth/applications](https://unsplash.com/oauth/applications) and click **New Application**. Accept the guidelines, name it "Biscuit Room" and create it.
-3. Copy the **Access Key** (never the Secret Key).
-4. While testing, paste it into the box Biscuit Pins shows. Before publishing, paste it into `js/config.js` so visitors don't need their own key.
+## Running your own copy
 
-A new key allows 50 searches an hour. Before sharing the site widely, apply for production access on the same Unsplash page (1,000 searches an hour, free).
+Biscuit Pins uses the [Unsplash API](https://unsplash.com/developers). To run your own copy, create a free Access Key and paste it into `js/config.js`. Without a key, Pins asks for one the first time it opens.
 
 ## Add your own music
 
