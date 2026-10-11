@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Biscuit Room · a cozy place to study</title>
+  <meta name="description" content="A cozy online study room with lo-fi music, rain sounds, a focus timer and a to-do list.">
+  <meta name="theme-color" content="#fff0f3">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=VT323&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/apps.css">
+</head>
+<body>
+  <a class="skip" href="#toolbar">Skip to controls</a>
+
+  <header class="top">
+    <h1 class="brand">Biscuit Room</h1>
+    <p class="tagline">A cozy place to study. Click anything in the room.</p>
+  </header>
+
+  <main>
+    <div class="stage">
+    <div class="room" id="room">
+      <svg class="room-art" viewBox="0 0 1280 800" role="img" aria-labelledby="roomTitle">
+        <title id="roomTitle">An illustrated pink bedroom with a rainy window, a corkboard, a wall clock, a desk with a laptop and a handheld game, and a record player.</title>
+        <defs>
+          <pattern id="wallDots" width="40" height="40" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="2.2" fill="#ffc9d6"/></pattern>
+          <pattern id="floorBoards" width="80" height="24" patternUnits="userSpaceOnUse"><rect width="80" height="24" fill="#efc2b6"/><path d="M0 23.5h80M40 0v24" stroke="#e0ab9d" stroke-width="2"/></pattern>
+          <clipPath id="windowGlass"><rect x="72" y="112" width="226" height="266" rx="12"/></clipPath>
+        </defs>
+
+        <!-- wall and floor -->
+        <rect width="1280" height="620" fill="#ffe3ea"/>
+        <rect width="1280" height="620" fill="url(#wallDots)"/>
+        <rect y="620" width="1280" height="180" fill="url(#floorBoards)"/>
+        <rect y="612" width="1280" height="12" fill="#fffafb" stroke="#5a2a3a" stroke-width="2"/>
+
+        <!-- window -->
+        <g id="window">
+          <rect x="70" y="110" width="230" height="270" rx="14" fill="#dfe6ff" stroke="#5a2a3a" stroke-width="3"/>
+          <g clip-path="url(#windowGlass)">
+            <rect class="sky-night" x="70" y="110" width="230" height="270" fill="#c9d3f5"/>
+            <g class="rain" stroke="#7c86c9" stroke-width="2.5" stroke-linecap="round">
+              <g class="rain-layer rain-a">
+                <path d="M100 120l-6 16M140 160l-6 16M240 130l-6 16M270 190l-6 16M110 260l-6 16M160 300l-6 16M230 250l-6 16M280 320l-6 16M190 200l-6 16M130 340l-6 16"/>
+              </g>
+              <g class="rain-layer rain-b">
+                <path d="M120 140l-6 16M180 120l-6 16M210 180l-6 16M90 210l-6 16M250 220l-6 16M150 230l-6 16M200 300l-6 16M260 350l-6 16M100 320l-6 16"/>
+              </g>
+            </g>
+          </g>
+          <path d="M185 110v270M70 245h230" stroke="#5a2a3a" stroke-width="3"/>
+          <rect x="70" y="110" width="230" height="270" rx="14" fill="none" stroke="#5a2a3a" stroke-width="3"/>
+          <path d="M60 100h250" stroke="#5a2a3a" stroke-width="5" stroke-linecap="round"/>
+          <path d="M64 100q30 60 0 150M306 100q-30 60 0 150" fill="#ffc9d6" stroke="#5a2a3a" stroke-width="3"/>
+          <rect x="60" y="380" width="250" height="16" rx="6" fill="#fffafb" stroke="#5a2a3a" stroke-width="3"/>
+          <g stroke="#5a2a3a" stroke-width="2.5" stroke-linejoin="round">
+            <path d="M245 380h40l-5 -38h-30z" fill="#ffd9cc"/>
+            <path d="M265 342q-20-30 -5-50q15 20 5 50M265 342q20-25 35-20q-10 25-35 20" fill="#d6efdc"/>
+          </g>
+        </g>
+
+        <!-- corkboard with paper notes (photos arrive in Stage 2) -->
+        <g id="corkboard">
+          <rect x="390" y="90" width="430" height="300" rx="14" fill="#f1d3bf" stroke="#5a2a3a" stroke-width="3"/>
+          <g stroke="#5a2a3a" stroke-width="2">
+            <rect x="415" y="112" width="86" height="106" rx="6" fill="#fffafb" transform="rotate(-4 458 165)"/>
+            <rect x="520" y="110" width="80" height="92" rx="6" fill="#dfe6ff" transform="rotate(3 560 156)"/>
+            <rect x="620" y="114" width="84" height="112" rx="6" fill="#d6efdc" transform="rotate(-2 662 170)"/>
+            <rect x="720" y="112" width="80" height="96" rx="6" fill="#fff0c9" transform="rotate(4 760 160)"/>
+            <rect x="420" y="246" width="84" height="94" rx="6" fill="#ffd9cc" transform="rotate(3 462 293)"/>
+            <rect x="524" y="226" width="82" height="110" rx="6" fill="#fffafb" transform="rotate(-3 565 281)"/>
+            <rect x="624" y="244" width="78" height="96" rx="6" fill="#f5d3e6" transform="rotate(2 663 292)"/>
+            <rect x="718" y="230" width="84" height="108" rx="6" fill="#dfe6ff" transform="rotate(-4 760 284)"/>
+          </g>
+          <g fill="#ff6f91" stroke="#5a2a3a" stroke-width="1.5">
+            <circle cx="458" cy="116" r="6"/><circle cx="560" cy="112" r="6"/><circle cx="662" cy="117" r="6"/><circle cx="760" cy="114" r="6"/>
+            <circle cx="462" cy="250" r="6"/><circle cx="565" cy="230" r="6"/><circle cx="663" cy="247" r="6"/><circle cx="760" cy="233" r="6"/>
+          </g>
+          <g stroke="#c9a9b4" stroke-width="3" stroke-linecap="round">
+            <path d="M432 150h50M432 166h38M538 140h44M538 156h30M640 150h44M640 166h28M736 145h44M436 285h50M540 265h46M540 281h34M640 280h40M734 270h46M734 286h30"/>
+          </g>
+        </g>
+
+        <!-- wall clock -->
+        <g id="clock">
+          <circle cx="975" cy="190" r="80" fill="#fffafb" stroke="#5a2a3a" stroke-width="3"/>
+          <circle cx="975" cy="190" r="66" fill="#fff0c9" stroke="#5a2a3a" stroke-width="3"/>
+          <g fill="#5a2a3a"><circle cx="975" cy="134" r="3"/><circle cx="1031" cy="190" r="3"/><circle cx="975" cy="246" r="3"/><circle cx="919" cy="190" r="3"/></g>
+          <line id="hourHand" x1="975" y1="190" x2="975" y2="150" stroke="#5a2a3a" stroke-width="6" stroke-linecap="round"/>
+          <line id="minuteHand" x1="975" y1="190" x2="975" y2="136" stroke="#5a2a3a" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="975" cy="190" r="6" fill="#ff6f91" stroke="#5a2a3a" stroke-width="2"/>
+          <text id="clockTimer" x="975" y="230" text-anchor="middle" font-family="Poppins, sans-serif" font-weight="700" font-size="18" fill="#5a2a3a"></text>
+        </g>
+
+        <!-- shelf -->
+        <g stroke="#5a2a3a" stroke-width="3">
+          <rect x="1080" y="330" width="170" height="14" rx="4" fill="#fffafb"/>
+          <rect x="1095" y="262" width="20" height="68" fill="#ffc9d6"/>
+          <rect x="1115" y="250" width="24" height="80" fill="#fff0c9"/>
+          <rect x="1139" y="268" width="18" height="62" fill="#d6efdc"/>
+          <rect x="1162" y="256" width="22" height="74" fill="#dfe6ff" transform="rotate(10 1173 330)"/>
+          <path d="M1210 330c-4-18 4-30 16-34c4 14-2 26-16 34z" fill="#d6efdc"/>
+        </g>
+
+        <!-- desk -->
+        <g stroke="#5a2a3a" stroke-width="3">
+          <rect x="360" y="470" width="560" height="22" rx="6" fill="#fffafb"/>
+          <path d="M385 492v128M895 492v128"/>
+        </g>
+
+        <!-- laptop -->
+        <g id="laptop" stroke="#5a2a3a" stroke-width="3">
+          <rect x="420" y="372" width="170" height="104" rx="10" fill="#fffafb"/>
+          <rect x="434" y="386" width="142" height="76" rx="5" fill="#dfe6ff"/>
+          <path d="M400 476h210l-12 -6h-186z" fill="#fffafb"/>
+          <g stroke-width="3" stroke-linecap="round"><path d="M452 404l6 6l10-12" fill="none"/><path d="M478 406h70" opacity=".55"/><path d="M452 426l6 6l10-12" fill="none"/><path d="M478 428h54" opacity=".55"/><rect x="452" y="442" width="14" height="12" rx="3" fill="none" stroke-width="2.5"/><path d="M478 448h62" opacity=".55"/></g>
+        </g>
+
+        <!-- handheld -->
+        <g id="handheld" stroke="#5a2a3a" stroke-width="3" transform="rotate(-8 700 441)">
+          <rect x="640" y="408" width="120" height="66" rx="18" fill="#ffc9d6"/>
+          <rect x="672" y="418" width="56" height="40" rx="6" fill="#d6efdc"/>
+          <path d="M652 438h12M658 432v12" stroke-linecap="round"/>
+          <circle cx="744" cy="434" r="4" fill="#ff6f91"/><circle cx="748" cy="446" r="4" fill="#f5d3e6"/>
+        </g>
+
+        <!-- mug with steam -->
+        <g stroke="#5a2a3a" stroke-width="3">
+          <path d="M820 430h44v34a10 10 0 0 1-10 10h-24a10 10 0 0 1-10-10z" fill="#fff0c9"/>
+          <path d="M864 440a10 10 0 0 1 0 20" fill="none"/>
+          <g class="steam" fill="none" stroke-linecap="round"><path d="M834 420q-6-10 0-18"/><path d="M850 420q-6-10 0-18"/></g>
+        </g>
+
+        <!-- record player -->
+        <g id="recordPlayer" stroke="#5a2a3a" stroke-width="3">
+          <rect x="980" y="540" width="200" height="16" rx="5" fill="#fffafb"/>
+          <path d="M1000 556v64M1160 556v64"/>
+          <rect x="990" y="480" width="180" height="60" rx="10" fill="#f5d3e6"/>
+          <g class="record">
+            <ellipse cx="1060" cy="488" rx="56" ry="14" fill="#5a2a3a"/>
+            <ellipse cx="1060" cy="488" rx="38" ry="9" fill="none" stroke="#7a4456" stroke-width="2"/>
+            <ellipse cx="1060" cy="486" rx="14" ry="5" fill="#ff6f91"/>
+          </g>
+          <path d="M1140 470l-30 22" stroke-linecap="round"/>
+          <circle cx="1146" cy="520" r="6" fill="#fffafb"/>
+        </g>
+        <g class="notes" fill="#5a2a3a" font-family="Poppins, sans-serif">
+          <text class="note n1" x="1110" y="455" font-size="28">♪</text>
+          <text class="note n2" x="1145" y="425" font-size="22">♫</text>
+          <text class="note n3" x="1080" y="430" font-size="20">♪</text>
+        </g>
+
+        <!-- rug -->
+        <ellipse cx="640" cy="720" rx="330" ry="50" fill="#f5d3e6" stroke="#5a2a3a" stroke-width="3"/>
+        <ellipse cx="640" cy="720" rx="270" ry="36" fill="none" stroke="#ff6f91" stroke-width="3" stroke-dasharray="10 10"/>
+      </svg>
+
+      <!-- clickable objects, positioned over the drawing -->
+      <button class="hotspot" id="hsRain" data-action="rain" aria-pressed="false" style="left:5.4%;top:13.5%;width:19%;height:36%">
+        <span class="chip chip-white" style="left:50%;top:107%">Rain sounds: <b class="rain-state">off</b></span>
+      </button>
+      <!-- saved pins show up on the corkboard -->
+      <div class="cork-pins" id="corkPins" aria-hidden="true"></div>
+      <button class="hotspot" data-app="pins" aria-label="Open Biscuit Pins mood board" style="left:30.4%;top:11.2%;width:33.6%;height:37.5%">
+        <span class="chip chip-pink" style="left:72%;top:-6%">Mood board</span>
+      </button>
+      <button class="hotspot hotspot-round" data-panel="timer" aria-controls="panel-timer" aria-expanded="false" style="left:69.9%;top:13.8%;width:12.5%;height:20%">
+        <span class="chip chip-butter" style="left:50%;top:112%">Focus timer</span>
+      </button>
+      <button class="hotspot" data-panel="todo" aria-controls="panel-todo" aria-expanded="false" style="left:31.2%;top:46%;width:16.8%;height:14%">
+        <span class="chip chip-sky" style="left:40%;top:-30%">To-do list</span>
+      </button>
+      <button class="hotspot" data-app="arcade" aria-label="Open Biscuit Arcade games" style="left:49.6%;top:49%;width:10%;height:11.5%">
+        <span class="chip chip-mint" style="left:60%;top:-38%">Break game</span>
+      </button>
+      <button class="hotspot" data-panel="music" aria-controls="panel-music" aria-expanded="false" style="left:76.8%;top:55%;width:15%;height:14%">
+        <span class="chip chip-lilac" style="left:40%;top:-42%">Music</span>
+      </button>
+
+      <!-- panels -->
+      <section class="panel" id="panel-timer" data-name="timer" hidden aria-labelledby="timerTitle">
+        <header class="panel-head"><h2 id="timerTitle">Focus timer</h2><button class="close" type="button" aria-label="Close focus timer">×</button></header>
+        <div class="modes" role="group" aria-label="Timer mode">
+          <button type="button" class="mode" data-mode="focus" aria-pressed="true">Focus 25</button>
+          <button type="button" class="mode" data-mode="short" aria-pressed="false">Break 5</button>
+          <button type="button" class="mode" data-mode="long" aria-pressed="false">Long 15</button>
+        </div>
+        <div class="time" id="timeDisplay" role="timer" aria-live="off">25:00</div>
+        <div class="bar" aria-hidden="true"><span id="timeBar"></span></div>
+        <p class="sessions" id="sessionText">Session 1 of 4</p>
+        <div class="row center">
+          <button type="button" class="btn btn-ink" id="timerStart">Start</button>
+          <button type="button" class="btn btn-line" id="timerReset">Reset</button>
+        </div>
+        <p class="sr-only" id="timerStatus" aria-live="polite"></p>
+      </section>
+
+      <section class="panel" id="panel-todo" data-name="todo" hidden aria-labelledby="todoTitle">
+        <header class="panel-head"><h2 id="todoTitle">To-do</h2><span class="muted small" id="todoCount">0 of 0 done</span><button class="close" type="button" aria-label="Close to-do list">×</button></header>
+        <ul class="todo-list" id="todoList"></ul>
+        <form class="todo-form" id="todoForm" autocomplete="off">
+          <label class="sr-only" for="todoInput">New task</label>
+          <input id="todoInput" type="text" maxlength="80" placeholder="Add a task">
+          <button type="submit" class="btn btn-rose">Add</button>
+        </form>
+        <p class="error small" id="todoError" aria-live="polite"></p>
+        <button type="button" class="link small" id="todoClear" hidden>Clear finished</button>
+      </section>
+
+      <section class="panel panel-wide" id="panel-music" data-name="music" hidden aria-labelledby="musicTitle">
+        <header class="panel-head"><h2 id="musicTitle">Music</h2><button class="close" type="button" aria-label="Close music player">×</button></header>
+        <div class="player">
+          <div class="cover" id="cover" aria-hidden="true"><span></span></div>
+          <div class="player-main">
+            <p class="track" id="trackTitle">Strawberry rain</p>
+            <p class="muted small" id="trackSub">Track 1 of 3</p>
+            <div class="row seek">
+              <span class="small mono" id="tNow">0:00</span>
+              <div class="bar"><span id="trackBar"></span></div>
+              <span class="small mono" id="tTotal">0:00</span>
+            </div>
+          </div>
+        </div>
+        <div class="row center controls">
+          <button type="button" class="icon-btn" id="prevBtn" aria-label="Previous track"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 5v14L8 12zM5 5v14" /></svg></button>
+          <button type="button" class="play" id="playBtn" aria-label="Play"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="i-play" d="M8 5v14l11-7z"/><path class="i-pause" d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></button>
+          <button type="button" class="icon-btn" id="nextBtn" aria-label="Next track"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5v14l11-7zM19 5v14"/></svg></button>
+        </div>
+        <div class="row volume">
+          <label for="musicVol" class="small">Music</label><input type="range" id="musicVol" min="0" max="100" value="70">
+        </div>
+        <div class="row volume">
+          <label for="rainVol" class="small">Rain</label><input type="range" id="rainVol" min="0" max="100" value="50">
+        </div>
+      </section>
+
+    </div>
+    </div>
+
+    <!-- simple controls for phones and keyboard users -->
+    <nav class="toolbar" id="toolbar" aria-label="Room controls">
+      <button type="button" class="tool" data-action="rain" aria-pressed="false"><span class="dot" style="background:#dfe6ff"></span>Rain</button>
+      <button type="button" class="tool" data-panel="music"><span class="dot" style="background:#f5d3e6"></span>Music</button>
+      <button type="button" class="tool" data-panel="timer"><span class="dot" style="background:#fff0c9"></span>Timer</button>
+      <button type="button" class="tool" data-panel="todo"><span class="dot" style="background:#dfe6ff"></span>To-do</button>
+      <button type="button" class="tool" data-app="pins"><span class="dot" style="background:#ffc9d6"></span>Mood board</button>
+      <button type="button" class="tool" data-app="arcade"><span class="dot" style="background:#d6efdc"></span>Games</button>
+    </nav>
+  </main>
+
+  <!-- ===== Biscuit Pins (opens from the corkboard) ===== -->
+  <section class="app" id="app-pins" hidden aria-labelledby="pinsTitle" role="dialog" aria-modal="true">
+    <header class="app-bar">
+      <button type="button" class="back" data-close-app>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6l6 6"/></svg>Room
+      </button>
+      <h2 class="app-logo" id="pinsTitle"><span class="logo-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 4.5l-4 4l-4 1.5l-1.5 1.5l7 7l1.5-1.5l1.5-4l4-4"/><path d="M9 15l-4.5 4.5"/><path d="M14.5 4l5.5 5.5"/></svg></span>Biscuit Pins</h2>
+      <nav class="pins-tabs" aria-label="Pins sections">
+        <button type="button" class="tab" data-view="discover" aria-pressed="true">Discover</button>
+        <button type="button" class="tab" data-view="boards" aria-pressed="false">Boards <span class="count" id="boardCount">0</span></button>
+      </nav>
+      <form class="pins-search" id="pinsSearch" role="search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <label for="pinsQuery" class="sr-only">Search photos</label>
+        <input id="pinsQuery" type="search" placeholder="Search for ideas" autocomplete="off">
+      </form>
+    </header>
+
+    <div class="app-body" id="pinsBody">
+      <!-- discover -->
+      <div class="view" data-view="discover">
+        <div class="pins-tools">
+          <div class="chips-row" id="pinsChips"></div>
+          <label class="save-to small">Saving to
+            <select id="saveTo"></select>
+          </label>
+        </div>
+        <form class="keybox" id="keyBox" hidden novalidate>
+          <h3>Connect Unsplash</h3>
+          <p>Biscuit Pins shows free photos from Unsplash. Paste your Unsplash Access Key to load them. It's saved only in this browser.</p>
+          <label for="keyInput">Access Key</label>
+          <div class="row">
+            <input id="keyInput" type="text" autocomplete="off" spellcheck="false" placeholder="Paste your Access Key here">
+            <button class="btn btn-rose" type="submit">Connect</button>
+          </div>
+          <p class="error small" id="keyErr" aria-live="polite"></p>
+          <p class="small muted">No key yet? Create a free one at unsplash.com/developers. The README explains each step.</p>
+        </form>
+        <div class="masonry" id="discoverGrid"></div>
+        <p class="status" id="pinsStatus" hidden></p>
+        <button type="button" class="btn btn-line more" id="pinsMore" hidden>Load more</button>
+      </div>
+
+      <!-- all boards -->
+      <div class="view" data-view="boards" hidden>
+        <div class="boards-head">
+          <h3>Your boards</h3>
+          <form class="new-board" id="newBoardForm" autocomplete="off">
+            <label for="newBoardName" class="sr-only">New board name</label>
+            <input id="newBoardName" type="text" maxlength="40" placeholder="New board name">
+            <button type="submit" class="btn btn-rose">Create</button>
+          </form>
+        </div>
+        <p class="error small" id="newBoardErr" aria-live="polite"></p>
+        <div class="boards-grid" id="boardsGrid"></div>
+      </div>
+
+      <!-- one board -->
+      <div class="view" data-view="board" hidden>
+        <div class="board-head">
+          <button type="button" class="link" data-view-go="boards">← All boards</button>
+          <div class="board-title-row">
+            <h3 id="boardName">Board</h3>
+            <span class="muted" id="boardMeta"></span>
+            <button type="button" class="btn btn-line btn-sm" id="renameBoard">Rename</button>
+            <button type="button" class="btn btn-line btn-sm" id="deleteBoard">Delete</button>
+          </div>
+          <form class="rename-form" id="renameForm" hidden autocomplete="off">
+            <label for="renameInput" class="sr-only">Board name</label>
+            <input id="renameInput" type="text" maxlength="40">
+            <button type="submit" class="btn btn-rose btn-sm">Save</button>
+            <button type="button" class="btn btn-line btn-sm" id="renameCancel">Cancel</button>
+          </form>
+          <div class="confirm" id="deleteConfirm" hidden>
+            <span>Delete this board and its pins?</span>
+            <button type="button" class="btn btn-ink btn-sm" id="deleteYes">Delete</button>
+            <button type="button" class="btn btn-line btn-sm" id="deleteNo">Keep it</button>
+          </div>
+        </div>
+        <div class="masonry" id="boardGrid"></div>
+        <p class="status" id="boardEmpty" hidden>No pins here yet. Go to Discover, find a photo you like and press Save.</p>
+      </div>
+    </div>
+
+    <footer class="app-foot small">Photos from <a href="https://unsplash.com/?utm_source=biscuit_room&amp;utm_medium=referral" target="_blank" rel="noopener">Unsplash</a> · <button type="button" class="link small" id="changeKey">Change Unsplash key</button></footer>
+
+    <!-- photo view -->
+    <div class="pin-modal" id="pinModal" hidden>
+      <div class="pin-card" role="dialog" aria-modal="true" aria-labelledby="pmTitle">
+        <div class="pm-img"><img id="pmImg" alt=""></div>
+        <div class="pm-side">
+          <button type="button" class="close" id="pmClose" aria-label="Close photo">×</button>
+          <h3 id="pmTitle"></h3>
+          <p class="muted small" id="pmCredit"></p>
+          <label class="small" for="pmBoard">Save to board</label>
+          <div class="row">
+            <select id="pmBoard"></select>
+            <button type="button" class="btn btn-rose" id="pmSave">Save</button>
+          </div>
+          <p class="small" id="pmMsg" aria-live="polite"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Biscuit Arcade (opens from the handheld) ===== -->
+  <section class="app app-arcade" id="app-arcade" hidden aria-labelledby="arcadeTitle" role="dialog" aria-modal="true">
+    <header class="app-bar">
+      <button type="button" class="back" data-close-app>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6l6 6"/></svg>Room
+      </button>
+      <h2 class="app-logo" id="arcadeTitle">Biscuit Arcade</h2>
+      <p class="muted small arcade-help">Arrow keys to move · Enter or Space for ♥ · Esc for back</p>
+    </header>
+    <div class="console-wrap">
+      <div class="console">
+        <div class="dpad" role="group" aria-label="Direction pad">
+          <button type="button" class="dp up" data-key="up" aria-label="Up"></button>
+          <button type="button" class="dp left" data-key="left" aria-label="Left"></button>
+          <span class="dp mid" aria-hidden="true"></span>
+          <button type="button" class="dp right" data-key="right" aria-label="Right"></button>
+          <button type="button" class="dp down" data-key="down" aria-label="Down"></button>
+        </div>
+        <div class="screen-frame">
+          <canvas id="arcadeScreen" width="640" height="480" tabindex="0" aria-label="Game screen"></canvas>
+          <p class="sr-only" id="arcadeLive" aria-live="polite"></p>
+        </div>
+        <div class="hearts" role="group" aria-label="Action buttons">
+          <button type="button" class="heart-btn a" data-key="a" aria-label="Select (A)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.4-9.3-9A5.3 5.3 0 0 1 12 6.6A5.3 5.3 0 0 1 21.3 12C19 16.6 12 21 12 21z"/></svg><span>A</span></button>
+          <button type="button" class="heart-btn b" data-key="b" aria-label="Back (B)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.4-9.3-9A5.3 5.3 0 0 1 12 6.6A5.3 5.3 0 0 1 21.3 12C19 16.6 12 21 12 21z"/></svg><span>B</span></button>
+        </div>
+        <p class="console-name" aria-hidden="true">Biscuit<span> Pocket</span></p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <p>Biscuit Room · music is generated live in your browser · photos from Unsplash · made by Rayyan Majid</p>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/playlist.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/pins.js"></script>
+  <script src="js/arcade.js"></script>
+</body>
+</html>
